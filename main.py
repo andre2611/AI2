@@ -38,7 +38,7 @@ def buscar_profundidade_limitada():
     if cidade_origem not in dados_distancias or cidade_destino not in dados_distancias:
         mostrar_resultado("Erro: Cidades de origem ou destino não encontradas.")
         return
- #Caminho: ['Viana do Castelo', 'Porto', 'Aveiro', 'Viseu', 'Vila Real', 'Bragança', 'Guarda', 'Castelo Branco', 'Évora']
+    
     # Chama a função BuscaProfundidade com os dados de distâncias
     resultado, custo = profundidade.BuscaProfundidade(dados_distancias, cidade_origem, cidade_destino, 10)
 
