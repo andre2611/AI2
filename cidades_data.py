@@ -50,12 +50,12 @@ caminhos ={
             'Braganca': 202,
             'Castelo Branco': 106
         },
-            'Leiria': {
-                'Lisboa': 129,
-                'Santarem': 70,
-                'Aveiro': 115,
-                'Coimbra': 67
-            },
+        'Leiria': {
+            'Lisboa': 129,
+            'Santarem': 70,
+            'Aveiro': 115,
+            'Coimbra': 67
+        },
         'Lisboa': {
             'Santarem': 78,
             'Setubal': 50,
