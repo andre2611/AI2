@@ -19,7 +19,7 @@ def buscar_custo_uniforme():
 
     # Chama a função BuscaCustoUniforme com os dados de distâncias
     resultado = f"Busca Custo Uniforme: De {cidade_origem} para {cidade_destino}"
-
+    
     # Mostrar o resultado na área de texto
     mostrar_resultado(resultado)
 
@@ -38,9 +38,9 @@ def buscar_profundidade_limitada():
     if cidade_origem not in dados_distancias or cidade_destino not in dados_distancias:
         mostrar_resultado("Erro: Cidades de origem ou destino não encontradas.")
         return
-
+ #Caminho: ['Viana do Castelo', 'Porto', 'Aveiro', 'Viseu', 'Vila Real', 'Bragança', 'Guarda', 'Castelo Branco', 'Évora']
     # Chama a função BuscaProfundidade com os dados de distâncias
-    resultado, custo = profundidade.BuscaProfundidade(dados_distancias, cidade_origem, cidade_destino)
+    resultado, custo = profundidade.BuscaProfundidade(dados_distancias, cidade_origem, cidade_destino, 10)
 
     # Verifica se foi encontrado um caminho
     if resultado:
@@ -73,7 +73,7 @@ def buscar_procura_sofrega():
         mostrar_resultado("Erro: Selecione uma cidade de origem e uma cidade de destino.")
         return
 
-    # Aqui você chamaria a função de busca de procura sôfrega
+    
     (estrada, custo)=Sofrega.buscasofrega(cidade_origem, cidade_destino, dados_distancias, distancia_direta)
     resultado = f"\n----------------Resultado----------------\n"
     resultado +=f"O melhor caminho tem o custo de '{estrada}' e tem como itenerário '{custo}'."
@@ -92,17 +92,18 @@ def buscar_a_estrela():
 
     # Chamada da função AStar
     custo, caminho = Astar.AStar(cidade_origem, cidade_destino, dados_distancias, distancia_direta)
-
+    
     if caminho:
         # Formatação do resultado principal
         resultado_formatado = f"------ (Algoritmo A*) ------\n\nCidade de origem: {cidade_origem}\nCidade de destino: {cidade_destino}\n\nCaminho: {caminho}\n\n"
-
+        
         # Adiciona a parte que mostra a distância entre cada par de cidades
         for i in range(len(caminho) - 1):
             cidade_atual = caminho[i]
             proxima_cidade = caminho[i + 1]
             distancia_entre_cidades = dados_distancias[cidade_atual][proxima_cidade]
             resultado_formatado += f"{cidade_atual} -> {proxima_cidade}: {distancia_entre_cidades}km\n"
+        
 
         resultado_formatado += f"\n\nDistância total: {custo}km"
 
@@ -110,7 +111,6 @@ def buscar_a_estrela():
         mostrar_resultado(resultado_formatado)
     else:
         mostrar_resultado("Caminho não encontrado.")
-
 
 # Função para mostrar o resultado na área de texto
 def mostrar_resultado(resultado):
@@ -128,6 +128,8 @@ with open('./Dados/distanciaDireta.json', 'r') as file:
 
 with open('./Dados/distanciaKM.json', 'r') as file:
     dados_distancias = json.load(file)  # Carrega as distâncias entre as cidades
+
+
 
 # ------------------ Interface Gráfica ------------------
 
@@ -174,8 +176,8 @@ console.pack(fill=tk.BOTH, expand=True)
 
 # Adiciona o texto fornecido
 # Acrescentar os nomes que faltam
-# texto_autor = tk.Label(janela, text="Nuno Castro - n. 4088", fg="white")
-# texto_autor.grid(row=4, column=0, columnspan=5, padx=10, pady=5, sticky="nsew")
+#texto_autor = tk.Label(janela, text="Nuno Castro - n. 4088", fg="white")
+#texto_autor.grid(row=4, column=0, columnspan=5, padx=10, pady=5, sticky="nsew")
 
 
 # Configuração para expansão da interface gráfica
