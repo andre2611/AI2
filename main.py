@@ -74,8 +74,12 @@ def buscar_procura_sofrega():
         return
 
     # Aqui você chamaria a função de busca de procura sôfrega
-    Sofrega.buscasofrega(cidade_origem, cidade_destino, dados_distancias, distancia_direta)
-    resultado = "Procura Sôfrega: De {cidade_origem} para {cidade_destino}"
+    (estrada, custo)=Sofrega.buscasofrega(cidade_origem, cidade_destino, dados_distancias, distancia_direta)
+    resultado = f"\n----------------Resultado----------------\n"
+    resultado +=f"O melhor caminho tem o custo de '{estrada}' e tem como itenerário '{custo}'."
+    resultado += f"\n-----------------------------------------\n"
+
+
 
     # Mostrar o resultado na área de texto
     mostrar_resultado(resultado)
